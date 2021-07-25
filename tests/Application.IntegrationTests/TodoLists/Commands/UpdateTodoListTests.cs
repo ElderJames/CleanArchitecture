@@ -74,8 +74,8 @@ namespace CleanArchitecture.Application.IntegrationTests.TodoLists.Commands
             list.Title.Should().Be(command.Title);
             list.LastModifiedBy.Should().NotBeNull();
             list.LastModifiedBy.Should().Be(userId);
-            list.LastModified.Should().NotBeNull();
-            list.LastModified.Should().BeCloseTo(DateTime.Now, 1000);
+            list.LastModifiedOn.Should().NotBeNull();
+            list.LastModifiedOn.Should().BeCloseTo(DateTime.Now, 1000);
         }
     }
 }

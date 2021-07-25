@@ -26,9 +26,9 @@ namespace CleanArchitecture.Application.TodoLists.Commands.CreateTodoList
 
             entity.Title = request.Title;
 
-            _context.TodoLists.Add(entity);
+            //_context.TodoLists.Add(entity);
 
-            await _context.SaveChangesAsync(cancellationToken);
+            //await _context.SaveChangesAsync(cancellationToken);
 
             return entity.Id;
         }

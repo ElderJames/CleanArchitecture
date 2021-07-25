@@ -27,17 +27,17 @@ namespace CleanArchitecture.Application.TodoItems.Commands.UpdateTodoItem
 
         public async Task<Unit> Handle(UpdateTodoItemCommand request, CancellationToken cancellationToken)
         {
-            var entity = await _context.TodoItems.FindAsync(request.Id);
+            //var entity = await _context.TodoItems.FindAsync(request.Id);
 
-            if (entity == null)
-            {
-                throw new NotFoundException(nameof(TodoItem), request.Id);
-            }
+            //if (entity == null)
+            //{
+            //    throw new NotFoundException(nameof(TodoItem), request.Id);
+            //}
 
-            entity.Title = request.Title;
-            entity.Done = request.Done;
+            //entity.Title = request.Title;
+            //entity.Done = request.Done;
 
-            await _context.SaveChangesAsync(cancellationToken);
+            //await _context.SaveChangesAsync(cancellationToken);
 
             return Unit.Value;
         }

@@ -1,7 +1,11 @@
-﻿using CleanArchitecture.Application.Common.Interfaces;
+﻿using AntDesign.Boilerplate.Server.Identity;
+using CleanArchitecture.Application.Common.Interfaces;
+using CleanArchitecture.Domain.Common;
+using CleanArchitecture.Domain.Repositories;
 using CleanArchitecture.Infrastructure.Files;
 using CleanArchitecture.Infrastructure.Identity;
 using CleanArchitecture.Infrastructure.Persistence;
+using CleanArchitecture.Infrastructure.Persistence.Repositories;
 using CleanArchitecture.Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
@@ -35,10 +39,13 @@ namespace CleanArchitecture.Infrastructure
             services
                 .AddDefaultIdentity<ApplicationUser>()
                 .AddRoles<IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
 
             services.AddIdentityServer()
-                .AddApiAuthorization<ApplicationUser, ApplicationDbContext>();
+                .AddApiAuthorization<ApplicationUser, ApplicationDbContext>()
+                .AddInMemoryClients(Config.Clients)
+                .AddInMemoryApiScopes(Config.ApiScopes);
 
             services.AddTransient<IDateTime, DateTimeService>();
             services.AddTransient<IIdentityService, IdentityService>();
@@ -51,6 +58,9 @@ namespace CleanArchitecture.Infrastructure
             {
                 options.AddPolicy("CanPurge", policy => policy.RequireRole("Administrator"));
             });
+
+            services.AddScoped(typeof(IRepository<,>),typeof(EFRepository<,>));
+            services.AddScoped<IUserRepository, UserRepository>();
 
             return services;
         }

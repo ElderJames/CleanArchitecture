@@ -2,7 +2,7 @@
 using AutoMapper.QueryableExtensions;
 using CleanArchitecture.Application.Common.Interfaces;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
+//using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -31,12 +31,12 @@ namespace CleanArchitecture.Application.TodoLists.Queries.ExportTodos
         {
             var vm = new ExportTodosVm();
 
-            var records = await _context.TodoItems
-                    .Where(t => t.ListId == request.ListId)
-                    .ProjectTo<TodoItemRecord>(_mapper.ConfigurationProvider)
-                    .ToListAsync(cancellationToken);
+            //var records = await _context.TodoItems
+            //        .Where(t => t.ListId == request.ListId)
+            //        .ProjectTo<TodoItemRecord>(_mapper.ConfigurationProvider)
+            //        .ToListAsync(cancellationToken);
 
-            vm.Content = _fileBuilder.BuildTodoItemsFile(records);
+            //vm.Content = _fileBuilder.BuildTodoItemsFile(records);
             vm.ContentType = "text/csv";
             vm.FileName = "TodoItems.csv";
 

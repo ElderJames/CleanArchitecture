@@ -55,7 +55,7 @@ namespace CleanArchitecture.Application.IntegrationTests.TodoLists.Commands
             list.Should().NotBeNull();
             list.Title.Should().Be(command.Title);
             list.CreatedBy.Should().Be(userId);
-            list.Created.Should().BeCloseTo(DateTime.Now, 10000);
+            list.CreatedOn.Should().BeCloseTo(DateTime.Now, 10000);
         }
     }
 }

@@ -31,11 +31,12 @@ namespace CleanArchitecture.Application.TodoItems.Queries.GetTodoItemsWithPagina
 
         public async Task<PaginatedList<TodoItemDto>> Handle(GetTodoItemsWithPaginationQuery request, CancellationToken cancellationToken)
         {
-            return await _context.TodoItems
-                .Where(x => x.ListId == request.ListId)
-                .OrderBy(x => x.Title)
-                .ProjectTo<TodoItemDto>(_mapper.ConfigurationProvider)
-                .PaginatedListAsync(request.PageNumber, request.PageSize);
+            //return await _context.TodoItems
+            //    .Where(x => x.ListId == request.ListId)
+            //    .OrderBy(x => x.Title)
+            //    .ProjectTo<TodoItemDto>(_mapper.ConfigurationProvider)
+            //    .PaginatedListAsync(request.PageNumber, request.PageSize);
+            return null;
         }
     }
 }

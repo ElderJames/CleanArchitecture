@@ -4,7 +4,7 @@ using CleanArchitecture.Application.Common.Interfaces;
 using CleanArchitecture.Application.Common.Security;
 using CleanArchitecture.Domain.Enums;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
+//using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 using System.Threading;
@@ -36,11 +36,11 @@ namespace CleanArchitecture.Application.TodoLists.Queries.GetTodos
                     .Select(p => new PriorityLevelDto { Value = (int)p, Name = p.ToString() })
                     .ToList(),
 
-                Lists = await _context.TodoLists
-                    .AsNoTracking()
-                    .ProjectTo<TodoListDto>(_mapper.ConfigurationProvider)
-                    .OrderBy(t => t.Title)
-                    .ToListAsync(cancellationToken)
+                //Lists = await _context.TodoLists
+                //    .AsNoTracking()
+                //    .ProjectTo<TodoListDto>(_mapper.ConfigurationProvider)
+                //    .OrderBy(t => t.Title)
+                //    .ToListAsync(cancellationToken)
             };
         }
     }

@@ -30,18 +30,18 @@ namespace CleanArchitecture.Application.TodoItems.Commands.UpdateTodoItemDetail
 
         public async Task<Unit> Handle(UpdateTodoItemDetailCommand request, CancellationToken cancellationToken)
         {
-            var entity = await _context.TodoItems.FindAsync(request.Id);
+            //var entity = await _context.TodoItems.FindAsync(request.Id);
 
-            if (entity == null)
-            {
-                throw new NotFoundException(nameof(TodoItem), request.Id);
-            }
+            //if (entity == null)
+            //{
+            //    throw new NotFoundException(nameof(TodoItem), request.Id);
+            //}
 
-            entity.ListId = request.ListId;
-            entity.Priority = request.Priority;
-            entity.Note = request.Note;
+            //entity.ListId = request.ListId;
+            //entity.Priority = request.Priority;
+            //entity.Note = request.Note;
 
-            await _context.SaveChangesAsync(cancellationToken);
+            //await _context.SaveChangesAsync(cancellationToken);
 
             return Unit.Value;
         }
